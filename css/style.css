@@ -1,0 +1,22 @@
+body {
+    background-color: #ececec;
+}
+#pageContainer {
+    max-width: 700px;
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+#pageContainer button {
+    cursor: pointer;
+}
+#todoList {
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+#todoList .handle {
+    margin-right: 10px;
+}
