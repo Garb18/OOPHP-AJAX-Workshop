@@ -18,13 +18,23 @@
 
 	public function addItemToList($listid, $itemName)
 	{
-		$query = "INSERT INTO list_items (list_id, item_Name) VALUES (:listid, :itemName)";
-		$pdo = $this->db->prepare($query);
-		$pdo->bindParam(':listid', $listid);
+		$query = "INSERT INTO list_items (item_name, list_id) VALUES (:itemName, :listid)";
+		$pdo = $this->db->prepare($query);		
 		$pdo->bindParam(':itemName', $itemName);
+		$pdo->bindParam(':listid', $listid);
 		$pdo->execute();
 
-		return $this->db->lastInsertId();
+		return $pdo->lastInsertId();
 	}
+
+	public function removeItemFromList($itemId){
+		$query = "DELETE FROM list_items WHERE item_id = :itemid";
+		$pdo = $this->db->prepare($query);
+		$pdo->bindParam(':itemid', $itemId);
+		$pdo->execute();
+
+		return $itemId;
+	}
+
 }
 ?>
