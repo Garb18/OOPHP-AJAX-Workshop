@@ -21,7 +21,7 @@
 		$query = "INSERT INTO list_items (item_name, list_id) VALUES (:itemName, :listid)";
 		$pdo = $this->db->prepare($query);		
 		$pdo->bindParam(':itemName', $itemName);
-		$pdo->bindParam(':listid', $listid);
+		$pdo->bindParam(':listid', $listid, PDO::PARAM_INT);
 		$pdo->execute();
 
 		return $pdo->lastInsertId();
@@ -35,6 +35,15 @@
 
 		return $itemId;
 	}
+
+	public function geAllListsForUser($userid){
+		$query = "SELECT * FROM lists WHERE user_id = :userid";
+		$pdo = $this->db->prepare($query);
+		$pdo->bindParam(':userid', $userid);
+		$pdo->execute();
+		return $pdo->fetchAll();
+	}
+	
 
 }
 ?>
