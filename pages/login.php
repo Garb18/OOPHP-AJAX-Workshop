@@ -14,11 +14,11 @@ if(isset($_POST['email']) || isset($_POST['password'])){
 		if($checkUser){
 			//User found
             $_SESSION['loggedin'] = true;
-		    	$_SESSION['userData'] = $checkUser;
+		    $_SESSION['userData'] = $checkUser;
 
-		    	echo "<script> window.location.assign('index.php?p=dashboard'); </script>";
+		    echo "<script> window.location.assign('index.php?p=dashboard'); </script>";
 		}else{
-		    	$error = "Username/Password Incorrect";
+		    $error = "Username/Password Incorrect";
 		}
 
 	}

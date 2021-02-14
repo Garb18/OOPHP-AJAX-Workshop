@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$('#addproduct').click(function() {
 		//Get value of item name
 		var itemName_input = $('#product').val();
@@ -39,5 +38,4 @@ $(document).ready(function() {
 			$('#todoList > li[data-id="'+response+'"]').remove();
 		});
  	});
-
 });

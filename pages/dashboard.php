@@ -5,6 +5,26 @@
 		echo "<script> window.location.assign('index.php?p=login'); </script>";
 		exit;
 	}
+	if(isset($_POST['name']))
+    {
+        //Check email/password is inputted
+        if(!$_POST['name'])
+        {
+            $error = "Please enter a name for your new list";
+        }
+        //Insert User if no errors
+        if(!$error)
+        {
+            //No errors - let’s create a new list
+            //Insert DB
+			// Hard code for now - Ask how to access id without seperate query later
+            $query = "INSERT INTO lists(user_id, list_name) VALUES(/*:user_id*/1, :name)";
+            $result = $DBH->prepare($query);
+            //$result->bindParam(':user_id', $_POST['email']);
+            $result->bindParam(':name', $_POST['name']);
+            $result->execute();
+        }
+	}
 ?>
 
 

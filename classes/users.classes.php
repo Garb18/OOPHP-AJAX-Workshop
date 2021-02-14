@@ -17,7 +17,7 @@
     
             if(empty($user)){
                 return false;
-            }else if(password_verify($password, $user[‘user_password’])){
+            }else if(password_verify($password, $user['user_password'])){
                 return $user;
             }else{
                 return false;
