@@ -36,7 +36,7 @@
 		return $itemId;
 	}
 
-	public function geAllListsForUser($userid){
+	public function getAllListsForUser($userid){
 		$query = "SELECT * FROM lists WHERE user_id = :userid";
 		$pdo = $this->db->prepare($query);
 		$pdo->bindParam(':userid', $userid);

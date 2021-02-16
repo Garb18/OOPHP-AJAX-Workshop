@@ -15,6 +15,7 @@ if(isset($_POST['email']) || isset($_POST['password'])){
 			//User found
             $_SESSION['loggedin'] = true;
 		    $_SESSION['userData'] = $checkUser;
+            $_SESSION['userid'] = $id;
 
 		    echo "<script> window.location.assign('index.php?p=dashboard'); </script>";
 		}else{

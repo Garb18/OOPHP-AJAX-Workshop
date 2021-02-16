@@ -18,9 +18,9 @@
             //No errors - let’s create a new list
             //Insert DB
 			// Hard code for now - Ask how to access id without seperate query later
-            $query = "INSERT INTO lists(user_id, list_name) VALUES(/*:user_id*/1, :name)";
+            $query = "INSERT INTO lists(user_id, list_name) VALUES(:user_id, :name)";
             $result = $DBH->prepare($query);
-            //$result->bindParam(':user_id', $_POST['email']);
+            $result->bindParam(':user_id', $_GET['id']);
             $result->bindParam(':name', $_POST['name']);
             $result->execute();
         }
@@ -36,7 +36,7 @@
     	<ul>
     	<?php
     		$todoListsObj = new todoLists($DBH); //Lets pass through our DB connection
-    		$lists = $todoListsObj->geAllListsForUser($_SESSION['userData']['user_id']); //Call the geAllListsForUser function
+    		$lists = $todoListsObj->getAllListsForUser($_SESSION['userData']['user_id']); //Call the geAllListsForUser function
 
     		foreach ($lists as $key => $value) { //Loop over returned items
     			echo '<li><a href="index.php?p=list&id='.$value['list_id'].'">'.$value['list_name'].'</a></li>';
