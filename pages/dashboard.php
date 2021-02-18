@@ -20,7 +20,7 @@
 			// Hard code for now - Ask how to access id without seperate query later
             $query = "INSERT INTO lists(user_id, list_name) VALUES(:user_id, :name)";
             $result = $DBH->prepare($query);
-            $result->bindParam(':user_id', $_GET['id']);
+            $result->bindParam(':user_id', $_SESSION['userData']['user_id']);
             $result->bindParam(':name', $_POST['name']);
             $result->execute();
         }
